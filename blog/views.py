@@ -11,6 +11,6 @@ def index():
         message = "This is post"
     return render_template("index.html", message=message)
 
-@app.route('/about')
-def about():
-    return 'about page'
+@app.route('/about/<a>')
+def about(a):
+    return 'this page is about {0}'.format(a)
