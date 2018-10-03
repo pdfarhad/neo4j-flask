@@ -1,13 +1,15 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def index():
-    data = [1, 2, 3]
-    data_dict = [{"x": 3} , {"x": 5}, {"x": 1}]
-    return render_template("index.html", data=data_dict)
+    
+    message = "This is get request"
+    if request.method == "POST":
+        message = "This is post"
+    return render_template("index.html", message=message)
 
 @app.route('/about')
 def about():
